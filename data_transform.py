@@ -33,6 +33,14 @@ try:
         archivo_csv_zona = f'compras_autos_{zona}.csv'
         data_zona.to_csv(archivo_csv_zona, index=False)
         print(f"Datos de la zona '{zona}' exportados a '{archivo_csv_zona}'")       
+    # Obtener zonas únicas
+    marcas = data_ordenada['Marca'].unique()
+
+    for marca in marcas:
+        data_marca = data_ordenada[data_ordenada['Marca'] == marca]
+        archivo_csv_marca = f'compras_autos_{marca}.csv'
+        data_marca.to_csv(archivo_csv_marca, index=False)
+        print(f"Datos de la marca '{marca}' exportados a '{archivo_csv_marca}'") 
         
 except Exception as e:
     print(f"Error al transformar los datos: {e}")
